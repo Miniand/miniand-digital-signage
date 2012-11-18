@@ -1,0 +1,88 @@
+extends layout
+
+block content
+  div.row
+    div.twelve.columns
+      div.row
+        div.twelve.columns.hide-for-small
+          div#featured
+            img(src="http://placehold.it/1200x500&text=Slide Image", alt="slide image")
+            img(src="http://placehold.it/1200x500&text=Slide Image", alt="slide image")
+            img(src="http://placehold.it/1200x500&text=Slide Image", alt="slide image")
+      div.row
+        div.twelve.columns.show-for-small
+          img(src="http://placehold.it/1200x700&text=Mobile Header")
+      br
+      div.row
+        div.twelve.columns
+          div.row
+            div.four.mobile-two.push-two-mobile.columns
+              h4 Upcoming Shows
+              hr
+              div.row
+                div.one.column
+                  img(src="http://placehold.it/50x50&text=[img]")
+                div.nine.columns
+                  h5
+                    a(href="#") Venue Name
+                  h6.subheader.show-for-small Doors at 00:00pm                
+              hr
+              div.hide-for-small
+                div.row
+                  div.one.column
+                    img(src="http://placehold.it/50x50&text=[img]")
+                  div.nine.columns
+                    h5.subheader
+                      a(href="#") Venue Name
+                hr
+                div.row
+                  div.one.column
+                    img(src="http://placehold.it/50x50&text=[img]")
+                  div.nine.columns
+                    h5.subheader
+                      a(href="#") Venue Name
+                hr
+                div.row
+                  div.one.column
+                    img(src="http://placehold.it/50x50&text=[img]")
+                  div.nine.columns
+                    h5.subheader
+                      a(href="#") Venue Name
+            div.four.mobile-two.pull-two-mobile.columns
+              img(src="http://placehold.it/300x465&text=Image")
+            div.four.mobile-four.columns
+              h4 Blog
+              hr
+              div.panel
+                h5
+                  a(href="#") Post Title 1
+                h6.subheader Risus ligula, aliquam nec fermentum vitae, sollicitudin eget urna. Suspendisse ultrices ornare tempor...
+                h6
+                  a(href="#") Read More »
+              div.panel.hide-for-small
+                h5
+                  a(href="#") Post Title 2 »
+              div.panel.hide-for-small
+                h5
+                  a(href="#") Post Title 3 »
+              a.right(href="#") Go To Blog »
+      footer.row
+        div.twelve.columns
+          hr
+          div.row
+            div.six.columns
+              p &copy; Copyright no one at all. Go to town.
+            div.six.columns
+              ul.link-list.right
+                li
+                  a(href="#") Link 1
+                li
+                  a(href="#") Link 2
+                li
+                  a(href="#") Link 3
+                li
+                  a(href="#") Link 4
+  script(type="text/javascript")
+    $(window).load(function() {
+      $('#featured').orbit({ fluid: '2x1' });
+    });

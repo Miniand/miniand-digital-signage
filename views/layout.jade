@@ -1,0 +1,37 @@
+doctype 5
+html(xmlns:ng="http://angularjs.org", ng-app="stadium")
+  head
+    title Miniand Digital Signage
+      if locals.title
+        != " - " + title
+    link(rel='stylesheet', href=css('application'))
+    each file in js('application')
+      script(src=file)
+  body
+    nav.top-bar
+      ul
+        li.name
+          h1
+            a(href="#") Miniand Digital Signage
+        li.toggle-topbar
+          a(href="#")
+      section
+        ul.left
+          li
+            a(href="#") Link
+          li
+            a(href="#") Link
+          li
+            a(href="#") Link
+        ul.right
+          li.has-dropdown
+            a(href="#") Link
+
+            ul.dropdown
+              li
+                a(href="#") Dropdown Link
+              li
+                a(href="#") Dropdown Link
+              li
+                a(href="#") Dropdown Link
+    block content

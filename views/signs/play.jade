@@ -1,0 +1,23 @@
+doctype 5
+html.signs-player(manifest='play/cache.manifest')
+  head
+    title Miniand Digital Signage
+    link(rel='stylesheet', href=css('sign_play'))
+    each file in js('sign_play')
+      script(src=file)
+  body
+    iframe(webkitallowfullscreen, mozallowfullscreen, allowfullscreen)
+  script(type="text/javascript")
+    var programs = [];
+    for (var i = 0; i < 10; i++) {
+      var p = new Miniand.Signs.Program();
+      p.src = 'http://0.0.0.0:3000/programs/' + i + '/play';
+      programs.push(p);
+    }
+    var sign = new Miniand.Signs.Sign();
+    sign.programs = programs;
+    var element = document.querySelector('.signs-player iframe');
+    var ctrl = new Miniand.Signs.SignController(sign, element);
+    ctrl.limitProgramLength = true;
+    ctrl.maximumProgramLength = 5000;
+    ctrl.run();
