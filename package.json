@@ -13,6 +13,8 @@
     "connect-assets": "*",
     "less": "*",
     "consolidate": "*",
-    "mustache": "*"
+    "mustache": "*",
+    "rethinkdb": "*",
+    "underscore": "*"
   }
 }
