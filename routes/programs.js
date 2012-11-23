@@ -1,5 +1,5 @@
 exports.register = function(app) {
-  app.get('/programs/:id/play/cache.manifest', exports.playCacheManifest);
+  app.get('/programs/:id/play/cache.appcache', exports.playCacheManifest);
   app.get('/programs/:id/play', exports.play);
   app.get('/programs/:id', exports.read);
   app.get('/programs', exports.index);
@@ -7,7 +7,7 @@ exports.register = function(app) {
 
 exports.playCacheManifest = function(req, res) {
   res.setHeader('Content-Type', 'text/cache-manifest');
-  res.render('programs/play/cache.manifest.mustache', {
+  res.render('programs/play/cache.appcache.mustache', {
     css: css('program_play'),
     js: js('program_play').join("\n")
   });
