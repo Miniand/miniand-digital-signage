@@ -1,4 +1,6 @@
-builtAssets
-rethinkdb_data
-uploads
+/builtAssets
+/rethinkdb_data
+/uploads/programs/*
+!/uploads/programs/test
+/uploads/programs/test/build
 .tags*

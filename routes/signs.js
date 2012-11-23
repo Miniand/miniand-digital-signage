@@ -1,10 +1,10 @@
 exports.register = function(app) {
-  app.get('/signs/:id/play/cache.appcache', exports.playCacheManifest);
+  app.get('/signs/:id/play/cache.appcache', exports.playAppCache);
   app.get('/signs/:id/play', exports.play);
   app.get('/signs/:id', exports.read);
 };
 
-exports.playCacheManifest = function(req, res) {
+exports.playAppCache = function(req, res) {
   res.setHeader('Content-Type', 'text/cache-manifest');
   res.render('signs/play/cache.appcache.mustache', {
     css: css('sign_play'),

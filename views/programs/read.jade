@@ -1,9 +1,2 @@
-doctype 5
-html.signs-player(manifest='play/cache.manifest')
-  head
-    title Miniand Digital Signage
-    link(rel='stylesheet', href=css('program_play'))
-    each file in js('program_play')
-      script(src=file)
-  body
-    h1 Program #{id}
+h1 #{program.name}
+a(href="#{helper.editPath(program.id)}") Edit

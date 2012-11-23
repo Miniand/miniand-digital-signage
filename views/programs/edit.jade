@@ -1,0 +1,19 @@
+h1 Edit #{program.name}
+h2 Details
+form(action="#{helper.readPath(program.id)}", method="POST")
+  input(type="submit", value="Save")
+h2 Files
+table
+  each file in program.files
+    tr
+      td #{file}
+h3 Upload file
+form(action="#{helper.filesPath(program.id)}", method="POST", enctype="multipart/form-data")
+  div
+    label(for="file") File
+    input#file(type="file", name="file")
+  div
+    label(for="name") Name
+    input#name(name="name")
+  div
+    input(type="submit", value="Upload")

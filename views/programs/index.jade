@@ -1,0 +1,10 @@
+h1 Programs
+table
+  thead
+    tr
+      th Program
+  tbody
+    each program in programs
+      tr
+        td
+          a(href="#{helper.editPath(program.id)}") #{program.name}

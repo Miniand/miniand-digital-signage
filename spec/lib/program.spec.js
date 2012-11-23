@@ -9,7 +9,8 @@ describe('A program', function() {
       expect(isValid).toBe(false);
       done();
     }, function(error) {
-      expect(error.stack).not.toBeDefined();
+      console.log(error.stack);
+      expect(false).toBe(true);
       done();
     });
   });
@@ -20,7 +21,8 @@ describe('A program', function() {
       expect(isValid).toBe(false);
       done();
     }, function(error) {
-      expect(error.stack).not.toBeDefined();
+      console.log(error.stack);
+      expect(false).toBe(true);
       done();
     });
   });
@@ -35,7 +37,8 @@ describe('A program', function() {
       expect(isValid).toBe(true);
       done();
     }, function(error) {
-      expect(error.stack).not.toBeDefined();
+      console.log(error.stack);
+      expect(false).toBe(true);
       done();
     });
   });
@@ -50,7 +53,8 @@ describe('A program', function() {
       expect(project).toBeDefined();
       done();
     }, function(error) {
-      expect(error.stack).not.toBeDefined();
+      console.log(error.stack);
+      expect(false).toBe(true);
       done();
     });
   });
@@ -66,10 +70,11 @@ describe('A program', function() {
   });
 
   it('should return a list of files', function(done) {
-    program.filesWithStats('f231926d-f002-4596-9447-0b6bfd15cd49')
+    program.filesWithStats('test')
     .then(function(files) {
       done();
     }, function(error) {
+      console.log(error.stack);
       expect(false).toBe(true);
       done();
     });
@@ -77,7 +82,7 @@ describe('A program', function() {
 
   it('should return true when checking for build required when last build was in the future', function(done) {
     p = {
-      id: 'f231926d-f002-4596-9447-0b6bfd15cd49',
+      id: 'test',
       name: 'Testicle',
       updatedAt: moment().add('days', 7).utc().format(),
       type: 'html',
@@ -89,6 +94,7 @@ describe('A program', function() {
       expect(requiresBuild).toBe(true);
       done();
     }, function(error) {
+      console.log(error.stack);
       expect(false).toBe(true);
       done();
     });
@@ -96,7 +102,7 @@ describe('A program', function() {
 
   it('should build the files', function(done) {
     p = {
-      id: 'f231926d-f002-4596-9447-0b6bfd15cd49',
+      id: 'test',
       name: 'Testicle',
       updatedAt: moment().add('days', 7).utc().format(),
       type: 'html',
