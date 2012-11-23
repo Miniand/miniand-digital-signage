@@ -17,6 +17,7 @@
     "rethinkdb": "*",
     "underscore": "*",
     "moment": "*",
-    "glob": "*"
+    "glob": "*",
+    "wrench": "*"
   }
 }

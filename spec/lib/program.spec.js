@@ -1,4 +1,6 @@
-var program = require('../../lib/program');
+var moment = require('moment'),
+  util = require('util'),
+  program = require('../../lib/program');
 
 describe('A program', function() {
   it('should be invalid for an empty object', function(done) {
@@ -68,6 +70,44 @@ describe('A program', function() {
     .then(function(files) {
       done();
     }, function(error) {
+      expect(false).toBe(true);
+      done();
+    });
+  });
+
+  it('should return true when checking for build required when last build was in the future', function(done) {
+    p = {
+      id: 'f231926d-f002-4596-9447-0b6bfd15cd49',
+      name: 'Testicle',
+      updatedAt: moment().add('days', 7).utc().format(),
+      type: 'html',
+      entry: 'index.html',
+      files: []
+    };
+    program.checkRequiresBuild(p)
+    .then(function(requiresBuild) {
+      expect(requiresBuild).toBe(true);
+      done();
+    }, function(error) {
+      expect(false).toBe(true);
+      done();
+    });
+  });
+
+  it('should build the files', function(done) {
+    p = {
+      id: 'f231926d-f002-4596-9447-0b6bfd15cd49',
+      name: 'Testicle',
+      updatedAt: moment().add('days', 7).utc().format(),
+      type: 'html',
+      entry: 'index.html',
+      files: []
+    };
+    program.build(p)
+    .then(function() {
+      done();
+    }, function(error) {
+      console.log(error.stack);
       expect(false).toBe(true);
       done();
     });

@@ -1,3 +1,4 @@
 builtAssets
 rethinkdb_data
 uploads
+.tags*
