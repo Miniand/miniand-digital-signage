@@ -1,5 +1,4 @@
 extends ../layout
-include form-fields
 
 block content
   h1 Programs
@@ -11,4 +10,4 @@ block content
       each program in programs
         tr
           td
-            a(href=helper.editPath(program.id))= program.name
+            a(href=helper.program.editPath(program.id))= program.name

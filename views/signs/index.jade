@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  h1 Signs
+  table
+    thead
+      tr
+        th Sign
+    tbody
+      each sign in signs
+        tr
+          td
+            a(href=helper.program.editPath(sign.id))= sign.name

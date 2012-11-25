@@ -2,8 +2,8 @@ extends ../layout
 include form-fields
 
 block content
-  h1 New program
+  h1 New sign
   form(action=helper.program.path(), method="post")
-    mixin program-form-fields({type: 'html', entry: 'index.html'})
+    mixin sign-form-fields({})
     div
       input(type="submit",value="Save")

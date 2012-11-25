@@ -1,0 +1,22 @@
+extends ../layout
+include form-fields
+
+block content
+  h1 Edit #{sign.name}
+  h2 Details
+  form(action=helper.program.readPath(sign.id), method="POST")
+    mixin sign-form-fields(sign)
+    input(type="hidden", name="_method", value="put")
+    input(type="submit", value="Save")
+  h2 Programs
+  table
+    each program in sign.programs
+      tr
+        td= program.name
+  h3 Add program
+  form(action=helper.sign.programsPath(sign.id), method="POST")
+    div
+      label(for="id") ID
+      input#id(name="program[id]")
+    div
+      input(type="submit", value="Add")

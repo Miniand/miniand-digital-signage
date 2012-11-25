@@ -1,5 +1,19 @@
 extends ../layout
 
 block content
-  h1 Match {{ 1 + 2 }}
-  div(matches-live-2d=true, match-id="123")
+  h1= sign.name
+  a(href=helper.sign.editPath(sign.id)) Edit
+  h2 Details
+  table
+    tr
+      th ID
+      td= sign.id
+    tr
+      th Name
+      td= sign.name
+  h2 Programs
+  table
+    each program in sign.programs
+      tr
+        td
+          a(href=helper.program.readPath(program.id))= program.name

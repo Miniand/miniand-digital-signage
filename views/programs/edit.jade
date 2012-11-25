@@ -4,7 +4,7 @@ include form-fields
 block content
   h1 Edit #{program.name}
   h2 Details
-  form(action=helper.readPath(program.id), method="POST")
+  form(action=helper.program.readPath(program.id), method="POST")
     mixin program-form-fields(program)
     input(type="hidden", name="_method", value="put")
     input(type="submit", value="Save")
@@ -14,7 +14,7 @@ block content
       tr
         td= file
   h3 Upload file
-  form(action=helper.filesPath(program.id), method="POST", enctype="multipart/form-data")
+  form(action=helper.program.filesPath(program.id), method="POST", enctype="multipart/form-data")
     div
       label(for="file") File
       input#file(type="file", name="file")

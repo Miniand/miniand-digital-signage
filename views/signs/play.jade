@@ -2,16 +2,19 @@ doctype 5
 html.signs-player(manifest='play/cache.appcache')
   head
     title Miniand Digital Signage
-    link(rel='stylesheet', href=css('sign_play'))
-    each file in js('sign_play')
+    link(rel='stylesheet', href=css('sign-play'))
+    each file in js('sign-play')
       script(src=file)
   body
     iframe(webkitallowfullscreen, mozallowfullscreen, allowfullscreen)
-  script(type="text/javascript")
+  script#sign-bootstrap(type="text/javascript", data-sign=JSON.stringify(sign), data-programs=JSON.stringify(programs))
+    var container = document.querySelector('#sign-bootstrap');
+    var rawSign = JSON.parse(container.getAttribute('data-sign'));
+    var rawPrograms = JSON.parse(container.getAttribute('data-programs'));
     var programs = [];
-    for (var i = 0; i < 10; i++) {
+    for (var i in rawPrograms) {
       var p = new Miniand.Signs.Program();
-      p.src = 'http://0.0.0.0:3000/programs/' + i + '/play';
+      p.src = rawPrograms[i].src;
       programs.push(p);
     }
     var sign = new Miniand.Signs.Sign();
