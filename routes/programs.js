@@ -9,6 +9,7 @@ exports.register = function(app) {
   app.get('/programs/:id/play', exports.playAction);
   app.get('/programs/:id/edit', exports.editAction);
   app.get('/programs/new', exports.newAction);
+  app.put('/programs/:id', exports.updateAction);
   app.get('/programs/:id', exports.readAction);
   app.post('/programs', exports.createAction);
   app.get('/programs', exports.indexAction);
@@ -54,7 +55,11 @@ exports.editAction = function(req, res) {
 };
 
 exports.newAction = function(req, res) {
-  res.render('programs/new');
+  programHelper.newViewData()
+  .then(function(newViewData) {
+    res.render('programs/new', newViewData);
+  })
+  .fail(errorHelper(req, res));
 };
 
 exports.createAction = function(req, res) {
@@ -68,6 +73,16 @@ exports.createAction = function(req, res) {
 exports.filesUploadAction = function(req, res) {
   program.saveFile(fs.createReadStream(req.files.file.path), req.body.name,
     req.params.id)
+  .then(function() {
+    res.redirect(programHelper.readPath(req.params.id));
+  })
+  .fail(errorHelper(req, res));
+};
+
+exports.updateAction = function(req, res) {
+  p = req.body.program;
+  p[program.idFieldName()] = req.params.id;
+  program.update(p)
   .then(function() {
     res.redirect(programHelper.readPath(req.params.id));
   })

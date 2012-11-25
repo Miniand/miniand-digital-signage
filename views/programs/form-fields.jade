@@ -1,0 +1,11 @@
+mixin program-form-fields(program)
+  div
+    label(for="name") Name: 
+    input#name(name="program[name]", value=program.name)
+  div
+    label(for="type") Type: 
+    input#type(name="program[type]", value=program.type)
+  div
+    label(for="entry") Entry: 
+    input#entry(name="program[entry]", value=program.entry)
+  

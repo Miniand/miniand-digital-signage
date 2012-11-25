@@ -1,10 +1,14 @@
-h1 Programs
-table
-  thead
-    tr
-      th Program
-  tbody
-    each program in programs
+extends ../layout
+include form-fields
+
+block content
+  h1 Programs
+  table
+    thead
       tr
-        td
-          a(href="#{helper.editPath(program.id)}") #{program.name}
+        th Program
+    tbody
+      each program in programs
+        tr
+          td
+            a(href=helper.editPath(program.id))= program.name

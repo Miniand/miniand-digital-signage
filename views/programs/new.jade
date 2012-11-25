@@ -1,13 +1,9 @@
-h1 New program
-form(action="#{helper.path()}", method="post")
-  div
-    label(for="name") Name: 
-    input#name(name="program[name]")
-  div
-    label(for="type") Type: 
-    input#type(name="program[type]", value="html")
-  div
-    label(for="entry") entry: 
-    input#entry(name="program[entry]", value="index.html")
-  div
-    input(type="submit",value="Save")
+extends ../layout
+include form-fields
+
+block content
+  h1 New program
+  form(action=helper.path(), method="post")
+    mixin program-form-fields({type: 'html', entry: 'index.html'})
+    div
+      input(type="submit",value="Save")

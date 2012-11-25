@@ -1,2 +1,24 @@
-h1 #{program.name}
-a(href="#{helper.editPath(program.id)}") Edit
+extends ../layout
+
+block content
+  h1= program.name
+  a(href=helper.editPath(program.id)) Edit
+  h2 Details
+  table
+    tr
+      th ID
+      td= program.id
+    tr
+      th Name
+      td= program.name
+    tr
+      th Type
+      td= program.type
+    tr
+      th Entry
+      td= program.entry
+  h2 Files
+  table
+    each file in program.files
+      tr
+        td= file
