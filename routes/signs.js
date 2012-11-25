@@ -50,7 +50,6 @@ exports.playAppCacheAction = function(req, res) {
       return time.valueOf();
     });
     cacheFiles = _.union.apply(_, cacheFiles);
-    console.log(times, latestTime, cacheFiles);
     res.setHeader('Content-Type', 'text/cache-manifest');
     res.render('programs/play/cache.appcache.mustache', {
       lastBuildTime: latestTime.utc().format(),
@@ -61,7 +60,7 @@ exports.playAppCacheAction = function(req, res) {
 };
 
 exports.playAction = function(req, res) {
-  program.find(req.params.id)
+  sign.find(req.params.id)
   .then(function(s) {
     return [s, sign.programs(s)];
   })

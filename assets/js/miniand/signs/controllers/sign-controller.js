@@ -64,6 +64,8 @@
     var self = this;
     if (this.limitProgramLength && this.programLengthLimitTimeout === null) {
       setTimeout(function() {
+        if (this.currentProgram === this.sign.programs.length)
+          window.location.reload(true);
         self.showNextProgram();
         self.setProgramLengthLimit();
       }, this.maximumProgramLength);

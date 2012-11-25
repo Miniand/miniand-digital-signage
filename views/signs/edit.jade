@@ -4,7 +4,7 @@ include form-fields
 block content
   h1 Edit #{sign.name}
   h2 Details
-  form(action=helper.program.readPath(sign.id), method="POST")
+  form(action=helper.sign.readPath(sign.id), method="POST")
     mixin sign-form-fields(sign)
     input(type="hidden", name="_method", value="put")
     input(type="submit", value="Save")

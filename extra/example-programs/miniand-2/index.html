@@ -1,0 +1,134 @@
+<html>
+<head>
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  height: 100%;
+}
+
+#left {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  float: right;
+}
+
+#right {
+  display: table;
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+#miniand {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  margin: auto;
+  background-color: #45D251;
+  border-radius: 250px;
+  opacity: 0;
+}
+#miniand.show {
+  opacity: 1;
+  -webkit-transition: opacity 3s ease 0;
+  -moz-transition: opacity 3s ease 0;
+  -o-transition: opacity 3s ease 0;
+  -ms-transition: opacity 3s ease 0;
+  transition: opacity 3s ease 0;
+}
+
+#text {
+  display: table-cell;
+  vertical-align: middle;
+  font-family: sans-serif;
+  color: #666;
+}
+
+#text p {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 0 16% 0 16%;
+  opacity: 0;
+}
+#text1.show {
+  opacity: 1;
+  -webkit-transition: opacity 3s ease 0.5s;
+  -moz-transition: opacity 3s ease 0.5s;
+  -o-transition: opacity 3s ease 0.5s;
+  -ms-transition: opacity 3s ease 0.5s;
+  transition: opacity 3s ease 0.5s;
+}
+#text2.show {
+  opacity: 1;
+  -webkit-transition: opacity 3s ease 1s;
+  -moz-transition: opacity 3s ease 1s;
+  -o-transition: opacity 3s ease 1s;
+  -ms-transition: opacity 3s ease 1s;
+  transition: opacity 3s ease 1s;
+}
+#text3.show {
+  opacity: 1;
+  -webkit-transition: opacity 3s ease 1.5s;
+  -moz-transition: opacity 3s ease 1.5s;
+  -o-transition: opacity 3s ease 1.5s;
+  -ms-transition: opacity 3s ease 1.5s;
+  transition: opacity 3s ease 1.5s;
+}
+
+@media all and (max-height: 799) {
+  #miniand {
+   width: 400px;
+    height: 400px;
+    border-radius: 200px;
+  }
+
+  #text {
+    font-size: 32px;
+  }
+}
+
+@media all and (min-height: 800) {
+  #text {
+    font-size: 46px;
+  }
+}
+</style>
+</head>
+<body>
+  <div id="container">
+    <div id="left">
+      <div id="miniand">
+      </div>
+    </div>
+    <div id="right">
+      <div id="text">
+        <p id="text1">
+          This is the first demo.
+        </p>
+        <p id="text2">
+          Will it work?
+        </p>
+        <p id="text3">
+          Only hamburger man knows.
+        </p>
+      </div>
+    </div>
+  </div>
+  <script>
+document.querySelector('#miniand').setAttribute('class', 'show');
+document.querySelector('#text1').setAttribute('class', 'show');
+document.querySelector('#text2').setAttribute('class', 'show');
+document.querySelector('#text3').setAttribute('class', 'show');
+  </script>
+</body>
+</html>

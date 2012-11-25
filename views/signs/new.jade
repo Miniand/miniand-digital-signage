@@ -3,7 +3,7 @@ include form-fields
 
 block content
   h1 New sign
-  form(action=helper.program.path(), method="post")
+  form(action=helper.sign.path(), method="post")
     mixin sign-form-fields({})
     div
       input(type="submit",value="Save")

@@ -1,0 +1,47 @@
+<html>
+<head>
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  position: relative;
+  height: 100%;
+}
+
+#miniand {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 667px;
+  height: 500px;
+  margin: auto;
+  opacity: 0;
+}
+#miniand.show {
+  opacity: 1;
+  -webkit-transition: opacity 3s ease 0;
+  -moz-transition: opacity 3s ease 0;
+  -o-transition: opacity 3s ease 0;
+  -ms-transition: opacity 3s ease 0;
+  transition: opacity 3s ease 0;
+}
+</style>
+</head>
+<body>
+  <div id="container">
+    <img id="miniand" src="hamburger.jpg" />
+  </div>
+  <script>
+document.querySelector('#miniand').setAttribute('class', 'show');
+document.querySelector('#text1').setAttribute('class', 'show');
+document.querySelector('#text2').setAttribute('class', 'show');
+document.querySelector('#text3').setAttribute('class', 'show');
+  </script>
+</body>
+</html>
