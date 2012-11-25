@@ -1,4 +1,5 @@
-var fs = require('fs'),
+var Q = require('q'),
+  fs = require('fs'),
   program = require('../lib/program'),
   programHelper = require('../lib/helper/program'),
   errorHelper = require('../lib/helper/error');
@@ -6,6 +7,7 @@ var fs = require('fs'),
 exports.register = function(app) {
   app.post('/programs/:id/files', exports.filesUploadAction);
   app.get('/programs/:id/play/cache.appcache', exports.playAppCacheAction);
+  app.get('/programs/:id/play/:file', exports.playFetchFileAction);
   app.get('/programs/:id/play', exports.playAction);
   app.get('/programs/:id/edit', exports.editAction);
   app.get('/programs/new', exports.newAction);
@@ -15,19 +17,46 @@ exports.register = function(app) {
   app.get('/programs', exports.indexAction);
 };
 
-exports.playAppCacheAction = function(req, res) {
-  // var buildTime = program.buildTime
-  res.setHeader('Content-Type', 'text/cache-manifest');
-  res.render('programs/play/cache.appcache.mustache', {
-    css: css('program_play'),
-    js: js('program_play').join("\n")
+exports.playFetchFileAction = function(req, res) {
+  program.find(req.params.id)
+  .then(function(p) {
+    return [p, program.buildIfRequired(p)];
+  })
+  .spread(function(p) {
+    res.sendfile(programHelper.programFilePath(p.id, req.params.file));
   });
 };
 
+exports.playAppCacheAction = function(req, res) {
+  program.find(req.params.id)
+  .then(function(p) {
+    return [p, program.buildIfRequired(p)];
+  })
+  .spread(function(p) {
+    return [p, programHelper.builtFilePaths(p.id), program.lastBuildTime(p.id)];
+  })
+  .spread(function(p, files, lastBuildTime) {
+    res.setHeader('Content-Type', 'text/cache-manifest');
+    res.render('programs/play/cache.appcache.mustache', {
+      lastBuildTime: lastBuildTime.utc().format(),
+      css: css('program_play'),
+      js: js('program_play').join("\n"),
+      playPath: programHelper.playPath(p.id),
+      files: files.join("\n")
+    });
+  })
+  .fail(errorHelper(req, res));
+};
+
 exports.playAction = function(req, res) {
-  res.render('programs/play', {
-    id: req.params.id
-  });
+  program.find(req.params.id)
+  .then(function (p) {
+    res.render('programs/play', {
+      program: p,
+      entryPath: programHelper.entryPath(p)
+    });
+  })
+  .fail(errorHelper(req, res));
 };
 
 exports.readAction = function(req, res) {

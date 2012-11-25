@@ -1,1 +1,14 @@
 @import 'vendor/reset';
+@import 'mixins/fill.less';
+
+html.programs-player {
+  .fill();
+  body {
+    .fill();
+    overflow: hidden;
+    iframe {
+      .fill();
+      border: 0;
+    }
+  }
+}

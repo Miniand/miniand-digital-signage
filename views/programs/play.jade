@@ -1,9 +1,7 @@
 doctype 5
-html.signs-player(manifest='play/cache.appcache')
+html.programs-player(manifest='play/cache.appcache')
   head
     title Miniand Digital Signage
     link(rel='stylesheet', href=css('program_play'))
-    each file in js('program_play')
-      script(src=file)
   body
-    h1 Program #{id}
+    iframe(webkitallowfullscreen, mozallowfullscreen, allowfullscreen, src=entryPath)
